@@ -1,41 +1,41 @@
 <div class="d-flex align-items-center justify-content-center" style="height: 100vh;">
-  <form action="/password" style="background-color: #ffff; width:40%" class="p-3">
+  <form action="/password" style="background-color: #ffff; width:40%" class="p-3" method="post">
     <div class="mt-3">
       <h4>Random Password Creater</h4>
     </div>
 
     <div class="mt-3">
-      <label for="number">Password Length</label>
-      <input class="col-md-6" type="number" id="number">
+      <label for="length">Password Length</label>
+      <input class="col-md-6" type="number" id="length" name="length">
     </div>
 
     <div class="mt-3">
-      <label for="lowercase">Include Lowercase Characters</label>
-      <input type="checkbox" id="lowercase">
+      <label for="includelowercase">Include Lowercase Characters</label>
+      <input type="checkbox" id="includelowercase" name="includelowercase">
       <p style="display:inline">(e.g. abcdefg)</p>
     </div>
 
     <div class="mt-3">
-      <label for="uppercase">Include Uppercase Characters</label>
-      <input type="checkbox" id="uppercase">
+      <label for="includeUppercase">Include Uppercase Characters</label>
+      <input type="checkbox" id="includeUppercase" name="includeUppercase">
       <p style="display:inline">(e.g. ABCDEFG)</p>
     </div>
 
     <div class="mt-3">
       <label for="includeNumbers">Include Numbers</label>
-      <input type="checkbox" id="includeNumbers">
+      <input type="checkbox" id="includeNumbers" name="includeNumbers">
       <p style="display:inline">(e.g. 123456)</p>
     </div>
 
     <div class="mt-3">
-      <label for="symbols">Include Symbols</label>
-      <input type="checkbox" id="symbols">
+      <label for="includeSymbols">Include Symbols</label>
+      <input type="checkbox" id="includeSymbols" name="includeSymbols">
       <p style="display:inline">(e.g. @#$%)</p>
     </div>
 
     <div class="mt-3">
       <label for="excludeCharacters">Exclude Characters</label>
-      <input class="col-md-6" type="text" id="excludeCharacters">
+      <input class="col-md-6" type="text" id="excludeCharacters" name="excludeCharacters">
     </div>
 
     <button type="submit" class="btn btn-success mt-4">Generate Password</button>
