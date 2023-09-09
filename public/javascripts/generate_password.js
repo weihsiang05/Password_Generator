@@ -4,6 +4,8 @@ function creatPassword(customized) {
   const upperCaseLetters = lowerCaseLetters.toUpperCase()
   const symbols = '~!@#$%^&*()_+?><,|"?~`'
   const numbers = '0123456789'
+  const miniumLength = 4
+  const maximumLength = 16
 
   //includeNumbers is from <input> name attribute
   if (customized.includeNumbers) {
@@ -23,6 +25,7 @@ function creatPassword(customized) {
 
   }
 
+  //removing specific characters which the user does not want to keep
   if (customized.excludeCharacters) {
     passswordCollection = passswordCollection.filter((character) => {
       if (customized.excludeCharacters.includes(character)) {
@@ -34,7 +37,22 @@ function creatPassword(customized) {
     })
   }
 
-  console.log(passswordCollection)
+
+
+  let password = ''
+
+  //To check the lenght of password is between 4 to 16
+  if (parseInt(customized.lengthOfPassword) >= miniumLength && parseInt(customized.lengthOfPassword) <= maximumLength) {
+    for (let i = 0; i <= parseInt(customized.lengthOfPassword); i++) {
+      //Create a random string
+      let randomIndex = Math.floor(Math.random() * passswordCollection.length)
+      password += passswordCollection[randomIndex]
+    }
+  }
+
+  console.log(password)
+
+  //console.log(passswordCollection)
 
 }
 
