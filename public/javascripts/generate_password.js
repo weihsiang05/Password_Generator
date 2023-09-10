@@ -6,15 +6,16 @@ function creatPassword(customized) {
   const numbers = '0123456789'
   const miniumLength = 4
   const maximumLength = 16
+  let password = ''
 
   //includeNumbers is from <input> name attribute
+  if (customized.includeUppercase) {
+    passswordCollection = passswordCollection.concat(upperCaseLetters.split(''))
+  }
   if (customized.includeNumbers) {
     passswordCollection = passswordCollection.concat(numbers.split(''))
   }
 
-  if (customized.includeUppercase) {
-    passswordCollection = passswordCollection.concat(upperCaseLetters.split(''))
-  }
 
   if (customized.includelowercase) {
     passswordCollection = passswordCollection.concat(lowerCaseLetters.split(''))
@@ -37,24 +38,16 @@ function creatPassword(customized) {
     })
   }
 
-
-
-  let password = ''
-
   //To check the lenght of password is between 4 to 16
   if (parseInt(customized.lengthOfPassword) >= miniumLength && parseInt(customized.lengthOfPassword) <= maximumLength) {
-    for (let i = 0; i <= parseInt(customized.lengthOfPassword); i++) {
+    for (let i = 0; i < parseInt(customized.lengthOfPassword); i++) {
       //Create a random string
       let randomIndex = Math.floor(Math.random() * passswordCollection.length)
       password += passswordCollection[randomIndex]
     }
   }
-
-  console.log(password)
-
-  //console.log(passswordCollection)
+  return password
 
 }
-
 
 module.exports = { creatPassword }
