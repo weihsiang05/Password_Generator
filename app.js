@@ -20,8 +20,10 @@ app.get('/password', (req, res) => {
 })
 
 app.post('/password', (req, res) => {
-  let customizedPassword = generatePassword.creatPassword(req.body)
-  res.render('index', { customizedPassword })
+  //To get user choice
+  const options = req.body
+  let customizedPassword = generatePassword.creatPassword(options)
+  res.render('index', { customizedPassword, options })
 })
 
 app.listen(port, () => {

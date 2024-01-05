@@ -1,52 +1,89 @@
 <div class="d-flex align-items-center justify-content-center" style="height: 100vh;">
-  <form action="/password" style="background-color: #ffff; width:40%;" class="p-3 " method="post">
-    <div class="mt-3">
+  <form novalidate id="form" action="/password" style="background-color: #ffff; width:40%;" class="p-3 " method="post">
+    <div class="mb-3 mt-3">
       <h4>Random Password Creater</h4>
     </div>
 
-    <div class="mt-3">
+    <div class="mb-3 mt-3">
       <label for="lengthOfPassword">Password Length</label>
-      <input class="col-md-6" type="number" id="lengthOfPassword" name="lengthOfPassword">
+      <input class="form-control col-md-6" type="number" id="lengthOfPassword" name="lengthOfPassword"
+        value="{{options.lengthOfPassword}}" min="4" max="16" required>
+      <small>Length is avaliable between 4 - 16</small>
+      <div class="invalid-feedback"></div>
     </div>
 
-    <div class="mt-3">
+    <div class="mb-3 mt-3">
       <label for="includelowercase">Include Lowercase Characters</label>
-      <input type="checkbox" id="includelowercase" name="includelowercase">
+      <input type="checkbox" id="includelowercase" name="includelowercase" {{#if
+        options.includelowercase}}checked{{/if}}>
       <p style="display:inline">(e.g. abcdefg)</p>
     </div>
 
-    <div class="mt-3">
+    <div class="mb-3 mt-3">
       <label for="includeUppercase">Include Uppercase Characters</label>
-      <input type="checkbox" id="includeUppercase" name="includeUppercase">
+      <input type="checkbox" id="includeUppercase" name="includeUppercase" {{#if
+        options.includeUppercase}}checked{{/if}}>
       <p style="display:inline">(e.g. ABCDEFG)</p>
     </div>
 
-    <div class="mt-3">
+    <div class="mb-3 mt-3">
       <label for="includeNumbers">Include Numbers</label>
-      <input type="checkbox" id="includeNumbers" name="includeNumbers">
+      <input type="checkbox" id="includeNumbers" name="includeNumbers" {{#if options.includeNumbers}}checked{{/if}}>
       <p style="display:inline">(e.g. 123456)</p>
     </div>
 
-    <div class="mt-3">
+    <div class="mb-3 mt-3">
       <label for="includeSymbols">Include Symbols</label>
-      <input type="checkbox" id="includeSymbols" name="includeSymbols">
+      <input type="checkbox" id="includeSymbols" name="includeSymbols" {{#if options.includeSymbols}}checked{{/if}}>
       <p style="display:inline">(e.g. @#$%)</p>
     </div>
 
-    <div class="mt-3 mb-3">
+    <div class="mb-3 mt-3">
       <label for="excludeCharacters">Exclude Characters</label>
-      <input class="col-md-6" type="text" id="excludeCharacters" name="excludeCharac ters">
+      <input class="col-md-6" type="text" id="excludeCharacters" name="excludeCharacters"
+        value="{{options.excludeCharacters}}">
+      <small>These characters will not appear in the password</small>
     </div>
 
-
-    <div class="mt-3">
+    <div class="mb-3 mt-3 backgrondColor ">
       {{#if customizedPassword}}
-      Your password is:{{customizedPassword}}
+      <span class="textColor">Your password is:</span>
+      <span class="text-danger">{{customizedPassword}}</span>
       {{/if }}
     </div>
 
-    <button type="submit" class="btn btn-success mt-4">Generate Password</button>
+    <button id="submit" type="submit" class="btn btn-success mt-4">Generate Password</button>
 
   </form>
 
+
 </div>
+
+{{!--
+<script>
+  const form = document.querySelector('#form')
+  const submitButton = document.querySelector('#submit')
+  let content = ''
+  const passwordLength = document.getElementsByName('lengthOfPassword').value
+  const invalid = document.querySelector('invalid-feedback')
+
+  submitButton.addEventListener('click', function onSubmitButtonClicked(event) {
+    form.classList.add('was-validated')
+  })
+
+
+  form.addEventListener('submit', function onFormSubmit(event) {
+    event.preventDefault()
+    console.log(parseInt(passwordLength))
+    /*if (passwordLength.value === '' || passwordLength.value === null) {
+      content += `<p>Please fill out this field</p>`
+    } else if (parseInt(passwordLength) < 4) {
+      content += `<p>Lenght should be higher than 4</p>`
+    } else if (parseInt(passwordLength) > 16) {
+      content += `<p>Lenght should be lower than 16</p>`
+    }
+
+    invalid.innerHTML = content*/
+    //event.stopPropagation()
+  })
+</script> --}}

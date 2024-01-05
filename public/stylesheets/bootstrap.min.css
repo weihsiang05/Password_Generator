@@ -624,6 +624,14 @@ progress {
   display: none !important
 }
 
+.backgrondColor {
+  background-color: #D2E3C8;
+}
+
+.textColor {
+  color: #739072
+}
+
 .lead {
   font-size: 1.25rem;
   font-weight: 300

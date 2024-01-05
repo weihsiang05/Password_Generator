@@ -38,15 +38,24 @@ function creatPassword(customized) {
     })
   }
 
-  //To check the lenght of password is between 4 to 16
-  if (parseInt(customized.lengthOfPassword) >= miniumLength && parseInt(customized.lengthOfPassword) <= maximumLength) {
-    for (let i = 0; i < parseInt(customized.lengthOfPassword); i++) {
-      //Create a random string
-      let randomIndex = Math.floor(Math.random() * passswordCollection.length)
-      password += passswordCollection[randomIndex]
+  if (parseInt(customized.lengthOfPassword) < miniumLength || parseInt(customized.lengthOfPassword) > maximumLength) {
+    const invalidlength = 'Length is avaliable between 4 - 16'
+    return invalidlength
+  } else if (passswordCollection.length === 0) {
+    const invalidchoice = 'There is no valid characters in your selection.'
+    return invalidchoice
+  } else {
+    //To check the lenght of password is between 4 to 16
+    if (parseInt(customized.lengthOfPassword) >= miniumLength && parseInt(customized.lengthOfPassword) <= maximumLength) {
+      for (let i = 0; i < parseInt(customized.lengthOfPassword); i++) {
+        //Create a random string
+        let randomIndex = Math.floor(Math.random() * passswordCollection.length)
+        password += passswordCollection[randomIndex]
+      }
     }
+    return password
   }
-  return password
+
 
 }
 
